@@ -1,0 +1,14 @@
+.jobVarient{
+    padding: 1rem 0;
+    justify-content: center;
+    margin: auto;
+    display: flex;
+    /* flex-direction: row; */
+    gap: 10rem;
+    color:black;
+    font-size: 14px;
+    font-weight: 500;
+}
+.searchJob{
+    border-bottom: 1px solid #3522e2;
+}

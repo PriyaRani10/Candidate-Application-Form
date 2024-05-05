@@ -7,6 +7,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import '../../src/styles/JobCard.css';
 import Logo from '../assets/images/GoogleLogo.png';
+import UserPic from "../assets/images/UserPic.jpeg";
 
 function JobCard() {
   return (
@@ -56,6 +57,11 @@ function JobCard() {
       </CardContent>
       <CardActions className='cardActionbtn'>
         <button  className="buttonApply">⚡ Easy Apply</button>
+        <button  className="buttonRefrral">
+            <div style={{width:"10%"}}><img src={UserPic} className='userPicStyle'/></div>
+            <div className='userRefer'>Ask for referral</div>
+        </button>
+
       </CardActions>
     </Card>
     </div>
