@@ -1,0 +1,143 @@
+.jobCard{
+    width: 25%;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    /* align-items: center; */
+    
+}
+.cardContainer{
+    color: rgba(0, 0, 0, 0.87);
+    transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    border-radius: 4px;
+    overflow: hidden;
+    max-width: 360px;
+    padding: 10px 5px !important;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 4px 0px !important;
+    height: 100% !important;
+    position: relative !important;
+    border-radius: 20px !important;
+    padding: 5px !important;
+}
+.postedDate{
+    display: flex;
+    width: 46%;
+    padding: 1px 2px;
+    box-shadow: rgba(6, 6, 6, 0.05) 0px 2px 6px 0px;
+    border-radius: 12px;
+    border: 1px solid rgb(230, 230, 230);
+}
+.postedDate p{
+    font-weight: 400;
+    line-height: 1.5;
+    font-size: 9px;
+}
+.card-body {
+    height: 100% !important;
+    position: relative !important;
+    border-radius: 20px !important;
+    padding: 5px !important;
+}
+.MuiBox-root{
+    font-size: 13px;
+    font-weight: 600;
+    /* letter-spacing: 1px; */
+    /* margin-bottom: 3px; */
+    color: #8b8b8b;
+}
+.JobName{
+    font-size: 14px;
+    padding-top: 2px;
+}
+.wrapinfo, .wrapinf{
+    display: flex;
+    padding-top: 5px;
+}
+.imgStyle{
+    width: 18%;
+}
+.infoContainer{
+    padding-top: 0.6rem;
+   line-height: 1.3;
+}
+.cards-sub-text {
+    font-size: 11px;
+    font-weight: 600;
+    margin-top: 5px;
+}
+.companyWrap{
+    height:10rem;
+    overflow: hidden;
+    mask-image: linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255), rgba(255, 255, 255, 0));
+}
+.aboutCompany{
+    font-size: 1rem;
+    line-height: 1.5;
+    font-weight: 600;
+}
+.aboutUs{font-weight: 600;}
+.aboutUs, .description{
+    font-size: 14px;
+}
+/* .aboutUs{font-weight: 500;} */
+.description{font-weight: 400;
+padding-right: 1rem;}
+.founderName a{
+    color: #4943da;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+}
+/* .cardActionbtn{
+    padding: 0 2rem !important;
+} */
+.salaryClass{
+    font-size: 14px !important;
+    font-weight: 500;
+    margin: 8px 0 !important;
+    color: rgb(77, 89, 106);
+}
+.buttonApply{
+    width: 100%;
+    background-color: rgb(85, 239, 196);
+    color: rgb(0, 0, 0);
+    font-weight: 500;
+    padding: 8px 18px;
+    border-radius: 8px;
+    margin: 5px 0;
+    outline: 0px;
+    border: 0px;
+    cursor: pointer;
+    user-select: none;
+    vertical-align: middle;
+    appearance: none;
+    text-decoration: none;
+    line-height: 1.75;
+    min-width: 64px;
+}
+.viewWholeJob{
+    text-align: center;
+    margin-bottom: 0.5rem;
+    position: relative;
+    top: -20px;
+}
+.viewWholeJob a{
+    cursor: pointer;
+    color: rgb(73, 67, 218);
+    text-decoration: none;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+}
+.exp-info-container{
+    margin-top: 10px;
+}
+.exp-info-container div:first-child{
+    font-size: 13px;
+    font-weight: 600;
+    /* letter-spacing: 1px; */
+    /* margin-bottom: 3px; */
+    color: #8b8b8b;
+}
+.exp-info-container div:last-child{
+    font-size: 14px;
+}
