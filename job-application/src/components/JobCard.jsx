@@ -7,7 +7,7 @@ import "../../src/styles/JobCard.css";
 import UserPic from "../assets/images/UserPic.jpeg";
 
 function JobCard() {
-  const [data, setData] = React.useState([""]);
+  const [data, setData] = React.useState([]);
   const [page, setPage] = React.useState(1);
   const [fetching, setFetching] = React.useState(false);
   React.useEffect(() => {
