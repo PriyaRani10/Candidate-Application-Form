@@ -10,10 +10,46 @@ import Logo from '../assets/images/GoogleLogo.png';
 import UserPic from "../assets/images/UserPic.jpeg";
 
 function JobCard() {
+  const [data, setData] = React.useState([""]);
+
+  React.useEffect(()=>{
+    const myHeaders= new Headers();
+    myHeaders.append("Content-Type","application/json");
+    const body=JSON.stringify({
+      "limit":10,
+      "offset":0
+    });
+    const requestOptions={
+      method:"POST",
+      headers:myHeaders,
+      body
+    };
+    const fetchData = async () => {
+      try {
+        const response = await fetch("https://api.weekday.technology/adhoc/getSampleJdJSON", requestOptions);
+        const result = await response.json();
+        // for (let i = 0; i < result.jdList.length; i++) {
+        // console.log("Fetched data:", result.jdList[i]);
+        // // console.log("company name",result.jdList[0].companyName);
+        // let PriyaData=result.jdList[i];
+        // console.log("hahah", PriyaData.companyName);
+        // setData(PriyaData);
+        // }
+        console.log(result.jdList);
+        setData(result.jdList);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  },[]);
   return (
-    
+    <>
+    {data && (
     <div className='jobCard'>
-       <Card sx={{ minWidth: 275 }} className='cardContainer'>
+      {data.map((item, index)=>(
+       <Card sx={{ minWidth: 275 }} className='cardContainer' key={index}>
       <CardContent>
         <div className='postedDate' gutterBottom>
           <p>⏳ Posted on 17 days ago </p>
@@ -22,13 +58,13 @@ function JobCard() {
         <div >
             <div className='wrapinf'>
             <div className='imgStyle'>
-            <img src={Logo} style={{width:"100%"}}/>
+            <img src={item.logoUrl} style={{width:"100%"}}/>
              </div>
              
             <div className='infoContainer'>
-            <div className="MuiBox-root">narrative (yc w23)</div>
-            <div className='JobName'>Founding Fullstack Engineer</div>
-            <div className="cards-sub-text">India</div>
+            <div className="MuiBox-root">{item.companyName}</div>
+            <div className='JobName'>{item.jobRole}</div>
+            <div className="cards-sub-text">{item.location}</div>
             </div>
             
             </div>
@@ -40,19 +76,14 @@ function JobCard() {
         <Typography className='companyWrap'>
             <div className='aboutCompany'>About Company:</div>
             <div className='aboutUs'>About us</div>
-            <div className='description'>Google is making AI powered data tools for logistics.
-                 We standardize and find errors in shipping invoice data for large companies.
-                 whether it's through disaster relief, revitalizing community
-                  spaces or providing essentials like winter jackets. 
-                 Each year, Americans donate over $450 billion to nonprofits,
-                  and cite trust and </div>
+            <div className='description'>{item.jobDetailsFromCompany}</div>
                  <div>Founder/Recruiter profiles:</div>
                  <div className='founderName'><a href="https://www.linkedin.com/in/dubeysuchit"><span style= {{fontWeight:400}}>Suchit Dubey</span></a></div>
         </Typography>
         <div className='viewWholeJob'><a href="https://pp.com">View job</a></div>
         <div className='exp-info-container'>
             <div>Minimum Experience</div>
-            <div>3 years</div>
+            <div>{item.minExp} years</div>
         </div>
       </CardContent>
       <CardActions className='cardActionbtn'>
@@ -64,7 +95,10 @@ function JobCard() {
 
       </CardActions>
     </Card>
+    ))}
     </div>
+    )}
+    </>
   )
 }
 

@@ -1,7 +1,8 @@
 .jobCard{
     /* width: 25%; */
     display: flex !important;
-    flex-direction: column !important;
+    /* flex-direction: column !important; */
+    flex-wrap: wrap;
     justify-content: space-between !important;
     /* align-items: center; */
     
@@ -18,6 +19,7 @@
     position: relative !important;
     border-radius: 20px !important;
     padding: 5px !important;
+    margin-bottom: 1rem !important;
 }
 .postedDate{
     display: flex;
@@ -53,6 +55,7 @@
 .wrapinfo, .wrapinf{
     display: flex;
     padding-top: 5px;
+    gap:1rem;
 }
 .imgStyle{
     width: 18%;
