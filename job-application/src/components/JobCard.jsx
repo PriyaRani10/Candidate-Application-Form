@@ -6,10 +6,17 @@ import Typography from "@mui/material/Typography";
 import "../../src/styles/JobCard.css";
 import UserPic from "../assets/images/UserPic.jpeg";
 
+// import { useDispatch } from 'react-redux';
+// import { setData } from './Redux/TaskActions';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchDataSuccess , filterDataSuccess} from '../Redux/TaskActions';
+import store from '../Redux/Store';
+
 function JobCard() {
   const [data, setData] = React.useState([]);
   const [page, setPage] = React.useState(1);
   const [fetching, setFetching] = React.useState(false);
+  const dispatch = useDispatch();
   React.useEffect(() => {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -30,6 +37,8 @@ function JobCard() {
           requestOptions
         );
         const result = await response.json();
+         dispatch(fetchDataSuccess(result.jdList));
+         dispatch(filterDataSuccess(result.jdList))
         // for (let i = 0; i < result.jdList.length; i++) {
         // console.log("Fetched data:", result.jdList[i]);
         // // console.log("company name",result.jdList[0].companyName);
@@ -63,6 +72,8 @@ function JobCard() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [fetching]);
+
+  const Filterdata = useSelector(state => state.data);
   return (
     <>
       {data && (

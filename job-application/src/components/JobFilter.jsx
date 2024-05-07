@@ -1,45 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import "../styles/JobFilter.css";
-import Select from "react-select";
 import SelectDropDown from "./SelectDropDown";
-const data = [
-  { value: "chocolate", label: "Chocolate" },
-  { value: "strawberry", label: "Strawberry" },
-  { value: "vanilla", label: "Vanilla" },
-];
+import { useDispatch, useSelector } from "react-redux";
+import {
+  roleOptions,
+  noOfExpOptions,
+  remoteOption,
+  expOptions,
+  MinBasePayOptions,
+} from "./OptionStaticData";
 
 function JobFilter() {
-  const [filtered, setFiltered] = useState([]);
+  const dispatch = useDispatch();
+
+  const data = useSelector((state) => state.data);
+  console.log("data", data);
+  // const [filtered, setFiltered] = useState([]);
   const [query, setQuery] = useState("");
-  // const [firstName, setFirstName] = useState("");
-  const onFilteredChangeCustom = (value, accessor) => {
-    console.log("typeof: " + typeof accessor);
-    console.log("value: " + value);
+  // dispatch(filterData(filtered));
 
-    let insertNewFilter = 1;
-    console.log(insertNewFilter);
+  const filterData = (e) => {
+    let option = e.target;
 
-    if (filtered.length) {
-      filtered.forEach((filter, i) => {
-        if (filter["id"] === accessor) {
-          if (value === "" || !value.length) {
-            filtered.splice(i, 1);
-          } else {
-            filter["value"] = value;
-          }
-          insertNewFilter = 0;
-        }
-      });
-    }
-
-    if (insertNewFilter) {
-      var customFilter = [];
-      customFilter.push({ id: accessor, value: value });
-      console.log("CUSTOM FILTER:" + customFilter);
-    }
-
-    setFiltered({ customFilter: filtered });
-    console.log("setFiltered: " + filtered);
+    console.log(option, "hiiiii options");
   };
 
   return (
@@ -50,56 +33,62 @@ function JobFilter() {
         <div>Suggested jobs</div>
       </div>
       <div className="allFilterWrap">
-      <div className='DropDown'>     
-      <SelectDropDown
-        placeholder={"Role"}
-        options={data}
-        onChange={onFilteredChangeCustom}
-      />
-      </div>
-      
-      <div>
-        <SelectDropDown
-          placeholder={"No.of Employee"}
-          options={data}
-          onChange={onFilteredChangeCustom}
-        />
-      </div>
-      <div>
-        {" "}
-        <SelectDropDown
-          placeholder={"Experience"}
-          options={data}
-          onChange={onFilteredChangeCustom}
-        />
-      </div>
-      <div>
-        {" "}
-        <SelectDropDown
-          placeholder={"Remote"}
-          options={data}
-          onChange={onFilteredChangeCustom}
-        />
-      </div>
-      <div>
-        {" "}
-        <SelectDropDown
-          placeholder={"Minimum Base Pay salary"}
-          options={data}
-          onChange={onFilteredChangeCustom}
-        />
-      </div>
+        <div className="DropDown">
+          <SelectDropDown
+            placeholder={"Role"}
+            options={roleOptions}
+            label={roleOptions}
+            // value={data.jobRole}
+            onChange={(e) => filterData(e)}
+          />
+        </div>
 
-      <div className="input-box">
-        <input
-          type="search"
-          name="search"
-          id="search-form"
-          className="search-input"
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search Company Name"
-        />
-      </div>
+        <div>
+          <SelectDropDown
+            placeholder={"No.of Employee"}
+            options={expOptions}
+            label={expOptions}
+            onChange={(e) => filterData(e)}
+          />
+        </div>
+        <div>
+          {" "}
+          <SelectDropDown
+            placeholder={"Experience"}
+            options={noOfExpOptions}
+            label={noOfExpOptions}
+            onChange={(e) => filterData(e)}
+          />
+        </div>
+        <div>
+          {" "}
+          <SelectDropDown
+            placeholder={"Remote"}
+            options={remoteOption}
+            label={remoteOption}
+            onChange={(e) => filterData(e)}
+          />
+        </div>
+        <div>
+          {" "}
+          <SelectDropDown
+            placeholder={"Minimum Base Pay salary"}
+            options={MinBasePayOptions}
+            label={MinBasePayOptions}
+            onChange={(e) => filterData(e)}
+          />
+        </div>
+
+        <div className="input-box">
+          <input
+            type="search"
+            name="search"
+            id="search-form"
+            className="search-input"
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Search Company Name"
+          />
+        </div>
       </div>
     </div>
   );
